@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Donor</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h2>Update Donor</h2>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    <form method="post">
+        <div class="mb-3">
+            <label>Name</label>
+            <input type="text" name="name" class="form-control" value="{{ donor['Name'] }}" required>
+        </div>
+        <div class="mb-3">
+            <label>Age</label>
+            <input type="number" name="age" class="form-control" value="{{ donor['Age'] }}" required>
+        </div>
+        <div class="mb-3">
+            <label>Blood Group</label>
+            <input type="text" name="blood_group" class="form-control" value="{{ donor['Blood Group'] }}" required>
+        </div>
+        <div class="mb-3">
+            <label>Contact</label>
+            <input type="text" name="contact" class="form-control" value="{{ donor['Contact'] }}" required>
+        </div>
+        <button type="submit" class="btn btn-warning">Update Donor</button>
+        <a href="/donors" class="btn btn-secondary">Back</a>
+    </form>
+</div>
+</body>
+</html>

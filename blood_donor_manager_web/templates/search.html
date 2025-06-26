@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Donor</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h2>Search by Blood Group</h2>
+    <form method="post">
+        <div class="mb-3">
+            <label>Blood Group</label>
+            <input type="text" name="blood_group" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-info">Search</button>
+        <a href="/" class="btn btn-secondary">Back</a>
+    </form>
+    {% if results is not none %}
+        <h4 class="mt-4">Results:</h4>
+        {% if results %}
+            <ul class="list-group">
+            {% for donor in results %}
+                <li class="list-group-item">
+                    Name: {{ donor['Name'] }}, Age: {{ donor['Age'] }}, Blood Group: {{ donor['Blood Group'] }}, Contact: {{ donor['Contact'] }}
+                </li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No donors found for this blood group.</p>
+        {% endif %}
+    {% endif %}
+</div>
+</body>
+</html>
